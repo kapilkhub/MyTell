@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+			 xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+			 xmlns:animations="clr-namespace:MyTell.Mobile.App.Animations"
+			 xmlns:triggers="clr-namespace:MyTell.Mobile.App.Triggers"
+             x:Class="MyTell.Mobile.App.MainPage"
+             xmlns:local="clr-namespace:MyTell.Mobile.App"
+			 Shell.FlyoutBehavior="Disabled"
+			 Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+			 >
+	<ContentPage.Title>
+		<OnPlatform x:TypeArguments="x:String">
+			<On Platform="iOS, WinUI" Value="eShop on Containers" />
+		</OnPlatform>
+	</ContentPage.Title>
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+
+			<Style x:Key="TitleLabelStyle"
+            TargetType="{x:Type Label}">
+				<Setter Property="FontFamily"
+                Value="Montserrat-Regular" />
+				<Setter Property="FontAttributes"
+                Value="Bold" />
+				<Setter Property="FontSize"
+                Value="{StaticResource MediumSize}" />
+				<Setter Property="HorizontalOptions"
+                Value="Center" />
+				<Setter Property="Margin"
+                Value="0, 12" />
+			</Style>
+
+			<Style x:Key="HeaderLabelStyle"
+            TargetType="{x:Type Label}">
+				<Setter Property="FontFamily"
+                Value="Montserrat-Regular" />
+				<Setter Property="FontSize"
+                Value="{StaticResource LittleSize}" />
+				<Setter Property="TextColor"
+                Value="{StaticResource Secondary}" />
+				<Setter Property="HorizontalOptions"
+                Value="Start" />
+			</Style>
+
+			<Style x:Key="LoginButtonStyle"
+            TargetType="{x:Type Label}">
+				<Setter Property="FontFamily"
+                Value="Montserrat-Regular" />
+				<Setter Property="TextColor"
+                Value="{StaticResource White}" />
+				<Setter Property="HorizontalOptions"
+                Value="Center" />
+				<Setter Property="VerticalOptions"
+                Value="Center" />
+			</Style>
+
+			<Style x:Key="LoginPanelStyle"
+            TargetType="{x:Type Grid}">
+				<Setter Property="HeightRequest"
+                Value="60" />
+				<Setter Property="BackgroundColor"
+                Value="{StaticResource Secondary}" />
+				<Setter Property="HorizontalOptions"
+                Value="FillAndExpand" />
+				<Setter Property="VerticalOptions"
+                Value="FillAndExpand" />
+			</Style>
+
+			<Style x:Key="RegisterPanelStyle"
+            TargetType="{x:Type Grid}"
+            BasedOn="{StaticResource LoginPanelStyle}">
+				<Setter Property="BackgroundColor"
+                Value="{StaticResource GreenColor}" />
+			</Style>
+
+			<Style x:Key="SettingsPanelStyle"
+            TargetType="{x:Type Grid}"
+            BasedOn="{StaticResource LoginPanelStyle}">
+				<Setter Property="BackgroundColor"
+                Value="{StaticResource BlackColor}" />
+			</Style>
+
+			<Style x:Key="SettingsImageStyle"
+            TargetType="{x:Type Image}">
+				<Setter Property="Margin"
+                Value="12" />
+			</Style>
+
+			<animations:StoryBoard
+          x:Key="LoginAnimation"
+          Target="{x:Reference LoginPanel}">
+				<animations:FadeInAnimation
+                Direction="Up"
+                Duration="1500" />
+			</animations:StoryBoard>
+
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Triggers>
+		<EventTrigger
+        Event="Appearing">
+			<triggers:BeginAnimation
+            Animation="{StaticResource LoginAnimation}" />
+		</EventTrigger>
+	</ContentPage.Triggers>
+
+	
+	<!--<VerticalStackLayout Padding="20" Spacing="10">
+		<FlexLayout JustifyContent="SpaceBetween" Wrap="Wrap">
+			<StackLayout x:Name="LoginView">
+				<Button x:Name="Login" StyleClass="FilledButton" Text="Login" Clicked="Login_Clicked" />
+			</StackLayout>
+			
+			<StackLayout
+                x:Name="HomeView"
+                IsVisible="false">
+
+				<Label
+                    x:Name="HelloLbl"
+                    Text="Hello, World!"
+                    SemanticProperties.HeadingLevel="Level5"
+                    FontSize="25"
+                    HorizontalOptions="Center" />
+
+				<Button
+                    x:Name="LogoutBtn"
+                    Text="Log Out"
+                    SemanticProperties.Hint="Click to log out"
+                   
+                    HorizontalOptions="Center"
+                    Margin="0,30"/>
+
+				<ListView x:Name="UserInfoLvw">
+					<ListView.HeaderTemplate>
+						<DataTemplate>
+							<Grid HeightRequest="50">
+								<Label LineBreakMode="NoWrap"
+                                       Margin="10,0,0,0" Text="Claims" FontAttributes="Bold"
+                                       FontSize="18" TextColor="Black" HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+							</Grid>
+						</DataTemplate>
+					</ListView.HeaderTemplate>
+				</ListView>
+
+			</StackLayout>
+		</FlexLayout>
+	</VerticalStackLayout>-->
+</ContentPage>
