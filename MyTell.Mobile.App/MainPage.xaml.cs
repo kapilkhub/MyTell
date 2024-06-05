@@ -57,7 +57,7 @@ namespace MyTell.Mobile.App
 				return;
 			}
 
-			await AnimateItem(Banner, 10500);
+			//await AnimateItem(Banner, 10500);
 		}
 
 		private async Task AnimateItem(View uiElement, uint duration)

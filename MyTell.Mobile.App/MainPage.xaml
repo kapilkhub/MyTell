@@ -109,7 +109,68 @@
 		</EventTrigger>
 	</ContentPage.Triggers>
 
-	
+	<Grid>
+		<Grid
+		 x:Name="LoginPanel"
+		 Padding="0"
+         ColumnSpacing="0"
+         RowSpacing="0"
+	     RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+		>
+			<Grid
+				ColumnDefinitions="*,*"
+				Grid.Row="0"
+				>
+				<StackLayout
+				   Grid.Column="0"
+				   Orientation="Horizontal"
+				   HorizontalOptions="Center">
+				   <Label Text="[" TextColor="{StaticResource Primary}"/>
+				   <Label Text="LOGIN" FontAttributes="Bold"/>
+				   <Label Text="]" TextColor="{StaticResource Secondary}"/>
+				</StackLayout>
+				<Grid
+                     Grid.Column="1"
+                     HorizontalOptions="Center">
+					<Label Text="SETTINGS" TextColor="Gray"/>
+					<Grid.GestureRecognizers>
+						<TapGestureRecognizer
+                         NumberOfTapsRequired="1" />
+					</Grid.GestureRecognizers>
+				</Grid>
+				
+			</Grid>
+			<!-- Login Button -->
+			<Label Grid.Row="1" Text="My Tell" Style="{StaticResource TitleLabelStyle}"/>
+			<StackLayout Grid.Row="2">
+				<Image
+					x:Name="Banner"
+					Aspect="AspectFill"
+					HeightRequest="300"
+					Source="banner.png"
+					Margin="10"
+					>
+				</Image>
+			</StackLayout>
+			<StackLayout Grid.Row="3" Margin="24">
+				<Frame BackgroundColor="White">
+					<StackLayout>
+						<Button StyleClass="FilledButton" Text="LOGIN" />
+					</StackLayout>
+				
+				</Frame>
+				
+			</StackLayout>
+
+			<Label Grid.Row="4" Text="ARE YOU REGISTERED?" Style="{StaticResource TitleLabelStyle}"/>
+
+			<StackLayout Grid.Row="5" Margin="24">
+				<Frame BackgroundColor="White">
+					<Button StyleClass="OutlinedButton" Text="REGISTER" />
+				</Frame>
+			</StackLayout>
+		</Grid>
+	</Grid>
 	<!--<VerticalStackLayout Padding="20" Spacing="10">
 		<FlexLayout JustifyContent="SpaceBetween" Wrap="Wrap">
 			<StackLayout x:Name="LoginView">
