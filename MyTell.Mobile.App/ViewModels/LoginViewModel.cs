@@ -1,8 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using IdentityModel.OidcClient;
 using Mopups.PreBaked.Services;
+using MyTell.Mobile.App.Constants;
 using MyTell.Mobile.App.Okta;
 using MyTell.Mobile.App.Services;
 using MyTell.Mobile.App.ViewModels.Base;
+using UraniumUI.Dialogs.Mopups;
 
 namespace MyTell.Mobile.App.ViewModels
 {
@@ -25,25 +28,24 @@ namespace MyTell.Mobile.App.ViewModels
 		public async Task Login()
 		{
 			
-			await _preBakedMopupService.WrapTaskInLoader(
-				Task.Delay(10000), 
-				Color.FromArgb("#f03224"), 
-				Color.FromArgb("#FFFFFF"), 
-				new List<string>(["Loading","We are logging you in."]),
-				Color.FromArgb("#f03224")
+		 var loginResult =	await _preBakedMopupService.WrapReturnableTaskInLoader(
+				_oktaClient.LoginAsync(),				
+				Color.FromArgb(ColorConstaint.PrimaryColor), 
+				Color.FromArgb(ColorConstaint.WhiteColor), 
+				new List<string>([LoadingDisplayText.Loading, LoadingDisplayText.PleaseWait]),
+				Color.FromArgb(ColorConstaint.PrimaryColor)
 				);
-
-
-			//var loginResult = await _oktaClient.LoginAsync();
-
-			//if (!loginResult.IsError)
-			//{
-			//	//_dialogService.
-			//}
-			//else
-			//{
-			//	//await DisplayAlert("Error", loginResult.ErrorDescription, "OK");
-			//}
+			if (!loginResult.IsError)
+			{
+				await Shell.Current.DisplayAlert("Success", "Login Successful", "OK");
+				//_preBakedMopupService.
+				////_dialogService.
+			}
+			else
+			{
+				await Shell.Current.DisplayAlert("Error", loginResult.ErrorDescription, "Cancel");
+				//await DisplayAlert("Error", loginResult.ErrorDescription, "OK");
+			}
 		}
 
 
