@@ -1,9 +1,11 @@
-﻿using Mopups.Hosting;
+﻿using CommunityToolkit.Maui;
+using Mopups.Hosting;
+using Mopups.PreBaked.Services;
+using Mopups.Services;
 using MyTell.Mobile.App.Okta;
 using MyTell.Mobile.App.Services;
-using UraniumUI;
-using CommunityToolkit.Maui;
 using MyTell.Mobile.App.ViewModels;
+using UraniumUI;
 
 namespace MyTell.Mobile.App
 {
@@ -15,10 +17,10 @@ namespace MyTell.Mobile.App
 			builder
 				.UseMauiApp<App>()
 				.UseMauiCommunityToolkit()
-				.ConfigureMopups()
 				.UseUraniumUI()
 				.UseUraniumUIMaterial()
 				.UseUraniumUIBlurs()
+				.ConfigureMopups()
 				.ConfigureFonts(fonts =>
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -50,14 +52,14 @@ namespace MyTell.Mobile.App
 		private static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
 		{
 			builder.Services.AddSingleton<INavigationService, NavigationService>();
+			builder.Services.AddSingleton(MopupService.Instance);
+			builder.Services.AddSingleton(PreBakedMopupService.GetInstance());
 			return builder;
 		}
 
 		private static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
 		{
 			builder.Services.AddSingleton<LoginViewModel>();
-		
-
 			return builder;
 		}
 	}
