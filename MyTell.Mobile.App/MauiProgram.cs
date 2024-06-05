@@ -1,6 +1,9 @@
 ﻿using Mopups.Hosting;
 using MyTell.Mobile.App.Okta;
+using MyTell.Mobile.App.Services;
 using UraniumUI;
+using CommunityToolkit.Maui;
+using MyTell.Mobile.App.ViewModels;
 
 namespace MyTell.Mobile.App
 {
@@ -11,6 +14,7 @@ namespace MyTell.Mobile.App
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
+				.UseMauiCommunityToolkit()
 				.ConfigureMopups()
 				.UseUraniumUI()
 				.UseUraniumUIMaterial()
@@ -19,15 +23,11 @@ namespace MyTell.Mobile.App
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-					fonts.AddFont("Font_Awesome_5_Free-Regular-400.otf", "FontAwesome-Regular");
-					fonts.AddFont("Font_Awesome_5_Free-Solid-900.otf", "FontAwesome-Solid");
-					fonts.AddFont("Montserrat-Bold.ttf", "Montserrat-Bold");
-					fonts.AddFont("Montserrat-Regular.ttf", "Montserrat-Regular");
-					fonts.AddFont("SourceSansPro-Regular.ttf", "SourceSansPro-Regular");
-					fonts.AddFont("SourceSansPro-Solid.ttf", "SourceSansPro-Solid");
-
+					fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialIconsRegular");
 					fonts.AddMaterialSymbolsFonts();
-				});
+				})
+				.RegisterViewModels()
+				.RegisterServices();
 
 			builder.Services.AddMopupsDialogs();
 			builder.Services.AddSingleton<MainPage>();
@@ -45,6 +45,20 @@ namespace MyTell.Mobile.App
 
 			builder.Services.AddSingleton(new OktaClient(oktaClientConfiguration));
 			return builder.Build();
+		}
+
+		private static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
+		{
+			builder.Services.AddSingleton<INavigationService, NavigationService>();
+			return builder;
+		}
+
+		private static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
+		{
+			builder.Services.AddSingleton<LoginViewModel>();
+		
+
+			return builder;
 		}
 	}
 }

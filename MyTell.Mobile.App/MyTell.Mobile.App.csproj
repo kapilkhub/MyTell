@@ -57,11 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Fonts\Font_Awesome_5_Free-Regular-400.otf" />
-	  <None Remove="Resources\Fonts\Font_Awesome_5_Free-Solid-900.otf" />
-	  <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
-	  <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
-	  <None Remove="Resources\Fonts\SourceSansPro-Regular.ttf" />
+	  <None Remove="Resources\Fonts\MaterialIcons-Regular.ttf" />
 	  <None Remove="Resources\Images\banner.png" />
 	</ItemGroup>
 
@@ -73,6 +69,8 @@
 		<PackageReference Include="UraniumUI.Icons.MaterialSymbols" Version="2.8.1" />
 		<PackageReference Include="UraniumUI.Dialogs.Mopups" Version="2.8.1" />
 		<PackageReference Include="UraniumUI.Blurs" Version="2.8.1" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
 	</ItemGroup>
 
 </Project>

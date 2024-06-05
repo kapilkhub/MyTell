@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
 			 xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
 			 xmlns:animations="clr-namespace:MyTell.Mobile.App.Animations"
 			 xmlns:triggers="clr-namespace:MyTell.Mobile.App.Triggers"
+			 xmlns:views="clr-namespace:MyTell.Mobile.App.Views"
+			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MyTell.Mobile.App.MainPage"
              xmlns:local="clr-namespace:MyTell.Mobile.App"
 			 Shell.FlyoutBehavior="Disabled"
@@ -155,7 +157,7 @@
 			<StackLayout Grid.Row="3" Margin="24">
 				<Frame BackgroundColor="White">
 					<StackLayout>
-						<Button StyleClass="FilledButton" Text="LOGIN" />
+						<Button StyleClass="FilledButton" Text="LOGIN" Command="{Binding LoginCommand}" />
 					</StackLayout>
 				
 				</Frame>
@@ -212,4 +214,4 @@
 			</StackLayout>
 		</FlexLayout>
 	</VerticalStackLayout>-->
-</ContentPage>
+</views:ContentPageBase>
