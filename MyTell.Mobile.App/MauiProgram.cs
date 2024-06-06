@@ -5,6 +5,8 @@ using Mopups.Services;
 using MyTell.Mobile.App.Okta;
 using MyTell.Mobile.App.Services;
 using MyTell.Mobile.App.ViewModels;
+using MyTell.Mobile.App.ViewModels.Identity;
+using MyTell.Mobile.App.Views.Identity;
 using Plugin.Maui.OCR;
 using UraniumUI;
 
@@ -30,12 +32,13 @@ namespace MyTell.Mobile.App
 					fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialIconsRegular");
 					fonts.AddMaterialSymbolsFonts();
 				})
+				.RegisterPages()
 				.RegisterViewModels()
 				.RegisterServices();
 
 			builder.Services.AddMopupsDialogs();
 			builder.Services.AddSingleton(OcrPlugin.Default);
-			builder.Services.AddSingleton<MainPage>();
+		
 
 			var oktaClientConfiguration = new Okta.OktaClientConfiguration()
 			{
@@ -53,7 +56,13 @@ namespace MyTell.Mobile.App
 			return builder.Build();
 		}
 
-		private static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
+		private static MauiAppBuilder RegisterPages(this MauiAppBuilder builder)
+		{
+			builder.Services.AddSingleton<MainPage>();
+			builder.Services.AddTransient<IdentityCardReaderPage>();
+			return builder;
+		}
+	    private static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
 		{
 			builder.Services.AddSingleton<INavigationService, NavigationService>();
 			builder.Services.AddSingleton(MopupService.Instance);
@@ -64,6 +73,7 @@ namespace MyTell.Mobile.App
 		private static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
 		{
 			builder.Services.AddSingleton<LoginViewModel>();
+			builder.Services.AddTransient<IdentityCardReaderModel>();
 			return builder;
 		}
 	}

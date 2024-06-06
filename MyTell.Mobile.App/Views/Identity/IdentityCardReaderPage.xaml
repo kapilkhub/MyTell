@@ -5,9 +5,8 @@
 			 xmlns:views="clr-namespace:MyTell.Mobile.App.Views"
              Title="IdentityCardReaderPage">
 	<VerticalStackLayout>
-		<Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+		<Frame BackgroundColor="White">
+			<Button StyleClass="OutlinedButton" Text="Pick Emirates ID" Command="{Binding OpenScannerCommand}" />
+		</Frame>
 	</VerticalStackLayout>
 </views:ContentPageBase>
