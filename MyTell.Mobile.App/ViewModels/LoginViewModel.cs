@@ -1,11 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using IdentityModel.OidcClient;
 using Mopups.PreBaked.Services;
 using MyTell.Mobile.App.Constants;
 using MyTell.Mobile.App.Okta;
 using MyTell.Mobile.App.Services;
 using MyTell.Mobile.App.ViewModels.Base;
-using UraniumUI.Dialogs.Mopups;
 
 namespace MyTell.Mobile.App.ViewModels
 {
@@ -38,14 +36,19 @@ namespace MyTell.Mobile.App.ViewModels
 			if (!loginResult.IsError)
 			{
 				await Shell.Current.DisplayAlert("Success", "Login Successful", "OK");
-				//_preBakedMopupService.
-				////_dialogService.
+				
 			}
 			else
 			{
 				await Shell.Current.DisplayAlert("Error", loginResult.ErrorDescription, "Cancel");
-				//await DisplayAlert("Error", loginResult.ErrorDescription, "OK");
 			}
+		}
+
+
+		[RelayCommand]
+		public async Task Register()
+		{
+			await _navigationService.GoToIdentityCardReader();
 		}
 
 

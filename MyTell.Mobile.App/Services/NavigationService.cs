@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MyTell.Mobile.App.Views.Identity;
 
 namespace MyTell.Mobile.App.Services
 {
-    public class NavigationService  : INavigationService
+	public class NavigationService  : INavigationService
     {
+        public async Task GoToIdentityCardReader() => await Shell.Current.GoToAsync(nameof(IdentityCardReaderPage));
     }
 }

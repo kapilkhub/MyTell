@@ -5,6 +5,7 @@ using Mopups.Services;
 using MyTell.Mobile.App.Okta;
 using MyTell.Mobile.App.Services;
 using MyTell.Mobile.App.ViewModels;
+using Plugin.Maui.OCR;
 using UraniumUI;
 
 namespace MyTell.Mobile.App
@@ -16,6 +17,7 @@ namespace MyTell.Mobile.App
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
+				.UseOcr()
 				.UseMauiCommunityToolkit()
 				.UseUraniumUI()
 				.UseUraniumUIMaterial()
@@ -32,7 +34,9 @@ namespace MyTell.Mobile.App
 				.RegisterServices();
 
 			builder.Services.AddMopupsDialogs();
+			builder.Services.AddSingleton(OcrPlugin.Default);
 			builder.Services.AddSingleton<MainPage>();
+
 			var oktaClientConfiguration = new Okta.OktaClientConfiguration()
 			{
 				// Use "https://{yourOktaDomain}/oauth2/default" for the "default" authorization server, or

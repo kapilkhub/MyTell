@@ -22,77 +22,6 @@
 
 	<ContentPage.Resources>
 		<ResourceDictionary>
-
-			<Style x:Key="TitleLabelStyle"
-            TargetType="{x:Type Label}">
-				<Setter Property="FontFamily"
-                Value="Montserrat-Regular" />
-				<Setter Property="FontAttributes"
-                Value="Bold" />
-				<Setter Property="FontSize"
-                Value="{StaticResource MediumSize}" />
-				<Setter Property="HorizontalOptions"
-                Value="Center" />
-				<Setter Property="Margin"
-                Value="0, 12" />
-			</Style>
-
-			<Style x:Key="HeaderLabelStyle"
-            TargetType="{x:Type Label}">
-				<Setter Property="FontFamily"
-                Value="Montserrat-Regular" />
-				<Setter Property="FontSize"
-                Value="{StaticResource LittleSize}" />
-				<Setter Property="TextColor"
-                Value="{StaticResource Secondary}" />
-				<Setter Property="HorizontalOptions"
-                Value="Start" />
-			</Style>
-
-			<Style x:Key="LoginButtonStyle"
-            TargetType="{x:Type Label}">
-				<Setter Property="FontFamily"
-                Value="Montserrat-Regular" />
-				<Setter Property="TextColor"
-                Value="{StaticResource White}" />
-				<Setter Property="HorizontalOptions"
-                Value="Center" />
-				<Setter Property="VerticalOptions"
-                Value="Center" />
-			</Style>
-
-			<Style x:Key="LoginPanelStyle"
-            TargetType="{x:Type Grid}">
-				<Setter Property="HeightRequest"
-                Value="60" />
-				<Setter Property="BackgroundColor"
-                Value="{StaticResource Secondary}" />
-				<Setter Property="HorizontalOptions"
-                Value="FillAndExpand" />
-				<Setter Property="VerticalOptions"
-                Value="FillAndExpand" />
-			</Style>
-
-			<Style x:Key="RegisterPanelStyle"
-            TargetType="{x:Type Grid}"
-            BasedOn="{StaticResource LoginPanelStyle}">
-				<Setter Property="BackgroundColor"
-                Value="{StaticResource GreenColor}" />
-			</Style>
-
-			<Style x:Key="SettingsPanelStyle"
-            TargetType="{x:Type Grid}"
-            BasedOn="{StaticResource LoginPanelStyle}">
-				<Setter Property="BackgroundColor"
-                Value="{StaticResource BlackColor}" />
-			</Style>
-
-			<Style x:Key="SettingsImageStyle"
-            TargetType="{x:Type Image}">
-				<Setter Property="Margin"
-                Value="12" />
-			</Style>
-
 			<animations:StoryBoard
           x:Key="LoginAnimation"
           Target="{x:Reference LoginPanel}">
@@ -110,108 +39,68 @@
             Animation="{StaticResource LoginAnimation}" />
 		</EventTrigger>
 	</ContentPage.Triggers>
-
-	<Grid>
-		<Grid
+	<ScrollView>
+		<Grid>
+			<Grid
 		 x:Name="LoginPanel"
 		 Padding="0"
          ColumnSpacing="0"
          RowSpacing="0"
 	     RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
 		>
-			<Grid
+				<Grid
 				ColumnDefinitions="*,*"
 				Grid.Row="0"
 				>
-				<StackLayout
+					<StackLayout
 				   Grid.Column="0"
 				   Orientation="Horizontal"
 				   HorizontalOptions="Center">
-				   <Label Text="[" TextColor="{StaticResource Primary}"/>
-				   <Label Text="LOGIN" FontAttributes="Bold"/>
-				   <Label Text="]" TextColor="{StaticResource Secondary}"/>
-				</StackLayout>
-				<Grid
+						<Label Text="[" TextColor="{StaticResource Primary}"/>
+						<Label Text="LOGIN" FontAttributes="Bold"/>
+						<Label Text="]" TextColor="{StaticResource Secondary}"/>
+					</StackLayout>
+					<Grid
                      Grid.Column="1"
                      HorizontalOptions="Center">
-					<Label Text="SETTINGS" TextColor="Gray"/>
-					<Grid.GestureRecognizers>
-						<TapGestureRecognizer
+						<Label Text="SETTINGS" TextColor="Gray"/>
+						<Grid.GestureRecognizers>
+							<TapGestureRecognizer
                          NumberOfTapsRequired="1" />
-					</Grid.GestureRecognizers>
+						</Grid.GestureRecognizers>
+					</Grid>
+
 				</Grid>
-				
-			</Grid>
-			<!-- Login Button -->
-			<Label Grid.Row="1" Text="My Tell" Style="{StaticResource TitleLabelStyle}"/>
-			<StackLayout Grid.Row="2">
-				<Image
+				<!-- Login Button -->
+				<Label HorizontalOptions="Center" FontSize="Small" FontAttributes="Bold" Grid.Row="1" Text="My Tell"/>
+				<StackLayout Grid.Row="2">
+					<Image
 					x:Name="Banner"
 					Aspect="AspectFill"
 					HeightRequest="300"
 					Source="banner.png"
 					Margin="10"
 					>
-				</Image>
-			</StackLayout>
-			<StackLayout Grid.Row="3" Margin="24">
-				<Frame BackgroundColor="White">
-					<StackLayout>
-						<Button StyleClass="FilledButton" Text="LOGIN" Command="{Binding LoginCommand}" />
-					</StackLayout>
-				
-				</Frame>
-				
-			</StackLayout>
+					</Image>
+				</StackLayout>
+				<StackLayout Grid.Row="3" Margin="24">
+					<Frame BackgroundColor="White">
+						<StackLayout>
+							<Button StyleClass="FilledButton" Text="LOGIN" Command="{Binding LoginCommand}" />
+						</StackLayout>
 
-			<Label Grid.Row="4" Text="ARE YOU REGISTERED?" Style="{StaticResource TitleLabelStyle}"/>
+					</Frame>
 
-			<StackLayout Grid.Row="5" Margin="24">
-				<Frame BackgroundColor="White">
-					<Button StyleClass="OutlinedButton" Text="REGISTER" />
-				</Frame>
-			</StackLayout>
+				</StackLayout>
+
+				<Label HorizontalOptions="Center" FontSize="Small" FontAttributes="Bold" Grid.Row="4" Text="ARE YOU REGISTERED?"/>
+
+				<StackLayout Grid.Row="5" Margin="24">
+					<Frame BackgroundColor="White">
+						<Button StyleClass="OutlinedButton" Text="REGISTER" Command="{Binding RegisterCommand}" />
+					</Frame>
+				</StackLayout>
+			</Grid>
 		</Grid>
-	</Grid>
-	<!--<VerticalStackLayout Padding="20" Spacing="10">
-		<FlexLayout JustifyContent="SpaceBetween" Wrap="Wrap">
-			<StackLayout x:Name="LoginView">
-				<Button x:Name="Login" StyleClass="FilledButton" Text="Login" Clicked="Login_Clicked" />
-			</StackLayout>
-			
-			<StackLayout
-                x:Name="HomeView"
-                IsVisible="false">
-
-				<Label
-                    x:Name="HelloLbl"
-                    Text="Hello, World!"
-                    SemanticProperties.HeadingLevel="Level5"
-                    FontSize="25"
-                    HorizontalOptions="Center" />
-
-				<Button
-                    x:Name="LogoutBtn"
-                    Text="Log Out"
-                    SemanticProperties.Hint="Click to log out"
-                   
-                    HorizontalOptions="Center"
-                    Margin="0,30"/>
-
-				<ListView x:Name="UserInfoLvw">
-					<ListView.HeaderTemplate>
-						<DataTemplate>
-							<Grid HeightRequest="50">
-								<Label LineBreakMode="NoWrap"
-                                       Margin="10,0,0,0" Text="Claims" FontAttributes="Bold"
-                                       FontSize="18" TextColor="Black" HorizontalOptions="Center"
-                                       VerticalOptions="Center"/>
-							</Grid>
-						</DataTemplate>
-					</ListView.HeaderTemplate>
-				</ListView>
-
-			</StackLayout>
-		</FlexLayout>
-	</VerticalStackLayout>-->
+	</ScrollView>
 </views:ContentPageBase>

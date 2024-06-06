@@ -66,12 +66,19 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Mopups" Version="1.3.1" />
+		<PackageReference Include="Plugin.Maui.OCR" Version="1.0.11" />
 		<PackageReference Include="UraniumUI.Material" Version="2.8.1" />
 		<PackageReference Include="UraniumUI.Icons.MaterialSymbols" Version="2.8.1" />
 		<PackageReference Include="UraniumUI.Dialogs.Mopups" Version="2.8.1" />
 		<PackageReference Include="UraniumUI.Blurs" Version="2.8.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Identity\IdentityCardReaderPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
