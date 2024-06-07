@@ -3,10 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyTell.Mobile.App.Views.Identity.IdentityCardReaderPage"
 			 xmlns:views="clr-namespace:MyTell.Mobile.App.Views"
-             Title="IdentityCardReaderPage">
-	<VerticalStackLayout>
-		<Frame BackgroundColor="White">
-			<Button StyleClass="OutlinedButton" Text="Pick Emirates ID" Command="{Binding OpenScannerCommand}" />
-		</Frame>
-	</VerticalStackLayout>
+             Title="Scan your Emirates Id">
+	<ScrollView>
+		<VerticalStackLayout>
+			<Frame BackgroundColor="White">
+				<VerticalStackLayout HeightRequest="350">
+					<Image
+				x:Name="EmiratesId"
+				Aspect="Fill" 
+				HeightRequest="300"
+				WidthRequest="400"
+				Source="emiratesid.png"
+				HorizontalOptions="Center"
+				Margin="10"
+				>
+					</Image>
+					<Label TextColor="{StaticResource Primary}" Text="Please scan front page of your Emirates Id."></Label>
+				</VerticalStackLayout>
+			</Frame>
+			<Frame BackgroundColor="White">
+				<Button StyleClass="OutlinedButton" Text="Scan Emirates ID" Command="{Binding OpenScannerCommand}" />
+			</Frame>
+		</VerticalStackLayout>
+	</ScrollView>
 </views:ContentPageBase>

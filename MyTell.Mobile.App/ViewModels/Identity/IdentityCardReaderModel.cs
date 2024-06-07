@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using MyTell.Mobile.App.Entities;
 using MyTell.Mobile.App.Services;
 using MyTell.Mobile.App.ViewModels.Base;
 using Plugin.Maui.OCR;
+using System.Globalization;
 
 namespace MyTell.Mobile.App.ViewModels.Identity
 {
@@ -37,9 +39,20 @@ namespace MyTell.Mobile.App.ViewModels.Identity
 				var ocrResult = await OcrPlugin.Default.RecognizeTextAsync(imageAsBytes);
 				if (ocrResult.Success)
 				{
-					await Shell.Current.DisplayAlert("Success", ocrResult.AllText, "OK");
+					var cardReader = new IdentityCardReadEntity();
+
+					var names = ocrResult.Lines.FirstOrDefault(l => l.StartsWith("name", StringComparison.OrdinalIgnoreCase))?.Split(":");
+					cardReader.Name = names?.Length > 1 ? names[1]?.Trim() : null;
+
+					var nationalities = ocrResult.Lines.FirstOrDefault(l => l.StartsWith("nationality", StringComparison.OrdinalIgnoreCase))?.Split(":");
+					cardReader.Nationality = nationalities?.Length > 1 ? nationalities[1]?.Trim() : null;
+
+					cardReader.EmiratesId = ocrResult.Lines.FirstOrDefault(l => l.StartsWith("784", StringComparison.OrdinalIgnoreCase));
+
+					await NavigationService.GoToRegister(cardReader);
+
 				}
-				else 
+				else
 				{
 					await Shell.Current.DisplayAlert("Error", "Ocr Not Possible", "OK");
 				}

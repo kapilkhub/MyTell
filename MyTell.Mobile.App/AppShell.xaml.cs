@@ -9,6 +9,7 @@ namespace MyTell.Mobile.App
 			InitializeComponent();
 
 			Routing.RegisterRoute(nameof(IdentityCardReaderPage), typeof(IdentityCardReaderPage));
+			Routing.RegisterRoute(nameof(RegistrationPage), typeof(RegistrationPage));
 		}
 	}
 }
