@@ -10,7 +10,7 @@ namespace MyTell.Mobile.App.Services
 		public async Task GoToRegister(IdentityCardReadEntity dict) =>
             await Shell.Current.GoToAsync(nameof(RegistrationPage), new Dictionary<string, object>
 			{
-				[nameof(RegistrationPage)] = dict
+				[nameof(IdentityCardReadEntity)] = dict
 			});
 
 	}

@@ -36,8 +36,7 @@ namespace MyTell.Mobile.App
 				.RegisterViewModels()
 				.RegisterServices();
 
-			builder.Services.AddMopupsDialogs();
-			builder.Services.AddSingleton(OcrPlugin.Default);
+		
 		
 
 			var oktaClientConfiguration = new Okta.OktaClientConfiguration()
@@ -60,10 +59,13 @@ namespace MyTell.Mobile.App
 		{
 			builder.Services.AddSingleton<MainPage>();
 			builder.Services.AddTransient<IdentityCardReaderPage>();
+			builder.Services.AddTransient<RegistrationPage>();
 			return builder;
 		}
 	    private static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
 		{
+			builder.Services.AddMopupsDialogs();
+			builder.Services.AddSingleton(OcrPlugin.Default);
 			builder.Services.AddSingleton<INavigationService, NavigationService>();
 			builder.Services.AddSingleton(MopupService.Instance);
 			builder.Services.AddSingleton(PreBakedMopupService.GetInstance());
@@ -74,6 +76,7 @@ namespace MyTell.Mobile.App
 		{
 			builder.Services.AddSingleton<LoginViewModel>();
 			builder.Services.AddTransient<IdentityCardReaderModel>();
+			builder.Services.AddTransient<RegistrationViewModel>();
 			return builder;
 		}
 	}

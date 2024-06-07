@@ -3,7 +3,6 @@ using MyTell.Mobile.App.Entities;
 using MyTell.Mobile.App.Services;
 using MyTell.Mobile.App.ViewModels.Base;
 using Plugin.Maui.OCR;
-using System.Globalization;
 
 namespace MyTell.Mobile.App.ViewModels.Identity
 {
