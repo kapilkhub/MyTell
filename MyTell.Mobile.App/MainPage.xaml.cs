@@ -16,25 +16,7 @@ namespace MyTell.Mobile.App
 			
 		}
 
-		private async void Login_Clicked(object sender, EventArgs e)
-		{
-			//var loginResult = await _oktaClient.LoginAsync();
-
-			//if (!loginResult.IsError)
-			//{
-			//	_authenticationData = loginResult;
-			//	//LoginView.IsVisible = false;
-			//	//HomeView.IsVisible = true;
-
-			//	//UserInfoLvw.ItemsSource = loginResult.User.Claims;
-			//	//HelloLbl.Text = $"Hello, {loginResult.User.Claims.FirstOrDefault(x => x.Type == "name")?.Value}";
-			//}
-			//else
-			//{
-			//	await DisplayAlert("Error", loginResult.ErrorDescription, "OK");
-			//}
-		}
-
+		
 		protected override async void OnAppearing()
 		{
 			var content = Content;
