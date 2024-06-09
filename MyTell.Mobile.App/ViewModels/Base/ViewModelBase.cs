@@ -4,7 +4,7 @@ using MyTell.Mobile.App.Services;
 
 namespace MyTell.Mobile.App.ViewModels.Base
 {
-	public abstract partial class ViewModelBase : ObservableObject, IViewModelBase
+	public abstract partial class ViewModelBase : ObservableValidator, IViewModelBase
 	{
 		private long _isBusy;
 
