@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyTell.Mobile.App.Views.Identity.RegistrationPage"
 			 xmlns:views="clr-namespace:MyTell.Mobile.App.Views"
+			 xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
              Title="Registration Page">
     <VerticalStackLayout>
         <Label 

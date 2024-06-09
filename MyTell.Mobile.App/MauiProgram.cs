@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using InputKit.Handlers;
 using Mopups.Hosting;
 using Mopups.PreBaked.Services;
 using Mopups.Services;
@@ -19,6 +20,10 @@ namespace MyTell.Mobile.App
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
+				.ConfigureMauiHandlers(handlers =>
+				{
+					handlers.AddInputKitHandlers(); 
+				})
 				.UseOcr()
 				.UseMauiCommunityToolkit()
 				.UseUraniumUI()
