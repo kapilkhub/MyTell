@@ -9,13 +9,29 @@
 			 xmlns:m="clr-namespace:UraniumUI.Icons.MaterialSymbols;assembly=UraniumUI.Icons.MaterialSymbols"
 			 xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
              Title="Registration Page">
-    <VerticalStackLayout>
-		<input:FormView>
-			<material:TextField
-             Title="E-mail"
-             AllowClear="True"
-			 Text="{v:ValidationBinding Email, Mode=OneWay}"
-             Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Mail}}"/>
-		</input:FormView>
-	</VerticalStackLayout>
+
+	<Grid>
+		<ScrollView>
+			<Grid>
+				<VerticalStackLayout Padding="20">
+					<input:FormView>
+						
+
+						<material:TextField Title="First Name"  AllowClear="True" Text="{v:ValidationBinding FirstName}" 
+						Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.User_attributes}}"/>
+
+						<material:TextField Title="Middle Name"  AllowClear="True" Text="{v:ValidationBinding MiddleName}" 
+									Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.User_attributes}}"/>
+
+						<material:TextField Title="Last Name"  AllowClear="True" Text="{v:ValidationBinding LastName}" 
+						      Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.User_attributes}}"/>
+
+						<material:TextField Title="E-mail" AllowClear="True" Text="{v:ValidationBinding Email}" 
+								Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Mail}}"/>
+
+					</input:FormView>
+				</VerticalStackLayout>
+			</Grid>
+		</ScrollView>
+	</Grid>
 </views:ContentPageBase>
