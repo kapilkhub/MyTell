@@ -1,4 +1,5 @@
 using CreateUser;
+using MyTell.IdentityManagement.Api.EndPointRouteBuilderExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,18 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddHttpClient<ICreateUserApiClient,CreateUserApiClient>();
+builder.Services.AddHttpClient<ICreateUserApiClient, CreateUserApiClient>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-	app.UseSwagger();
-	app.UseSwaggerUI();
-}
 
 app.UseHttpsRedirection();
+app.UseSwagger();
+app.UseSwaggerUI();
 
+app.RegisterUserCreateEndpoints();
 app.Run();
 
