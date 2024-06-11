@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using FluentValidation;
 
 namespace CreateUser
 {
-    public class CreateUserWithoutCredentialsRequest
+	public class CreateUserWithoutCredentialsRequest
     {
         public Profile Profile { get; set; }
     }
@@ -17,4 +14,6 @@ namespace CreateUser
         public string Email { get; set; }
         public string Login { get; set; }
     }
+
+    
 }
