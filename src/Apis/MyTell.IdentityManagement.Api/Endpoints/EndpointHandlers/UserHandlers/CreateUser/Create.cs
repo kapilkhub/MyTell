@@ -6,7 +6,7 @@ namespace MyTell.IdentityManagement.Api.Endpoints.EndpointHandlers.UserHandlers.
 {
 	public static partial class User
     {
-        public static async Task<Results<Ok<CreateUserWithoutCredentialsOKResponse>,BadRequest<CreateUserWithoutCredentialsBadRequestResponse>>> CreateUserWithoutCredentials(
+        public static async Task<Results<Ok<CreateUserWithoutCredentialsOKResponse>,BadRequest<CreateUserBadRequestResponse>>> CreateUserWithoutCredentials(
             [FromBody] CreateUserWithoutCredentialsRequest request,
             [AsParameters] CreateUserWithoutCredentialsParameters queryParameters,
             [FromServices] ICreateUserApiClient createUserApiClient
@@ -22,6 +22,23 @@ namespace MyTell.IdentityManagement.Api.Endpoints.EndpointHandlers.UserHandlers.
 				return TypedResults.BadRequest(result.AsT1);
 			}
         }
+
+		public static async Task<Results<Ok<CreateUserInGroupOKResponse>, BadRequest<CreateUserBadRequestResponse>>> CreateUserInGroup(
+			[FromBody] CreateUserInGroupRequest request,
+			[AsParameters] CreateUserInGroupParameters queryParameters,
+			[FromServices] ICreateUserApiClient createUserApiClient
+		  )
+		{
+			var result = await createUserApiClient.CreateUserInGroup(queryParameters, request);
+			if (result.IsT0)
+			{
+				return TypedResults.Ok(result.AsT0);
+			}
+			else
+			{
+				return TypedResults.BadRequest(result.AsT1);
+			}
+		}
 
 		public static async Task<Ok<CreateUserWithPasswordResponse>> CreateUserWithPassword(
 		  [FromBody] CreateUserWithPasswordRequest request,

@@ -13,11 +13,20 @@ namespace MyTell.IdentityManagement.Api.Endpoints.EndpointRouteBuilderExtensions
             userEndpoint.MapPost("", User.CreateUserWithoutCredentials)
                 .AddEndpointFilter<ValidationFilter<CreateUserWithoutCredentialsRequest>>()
 				.ProducesValidationProblem(400)
-				.Produces(422,typeof(CreateUserWithoutCredentialsBadRequestResponse))
+				.Produces(422,typeof(CreateUserBadRequestResponse))
 				.Produces(200, typeof(CreateUserWithoutCredentialsOKResponse))
 				.ProducesValidationProblem(400)
 				.WithSummary("Creates user without password")
                 .WithDescription("Creates user without password and Activation status");
+
+			userEndpoint.MapPost("/group", User.CreateUserInGroup)
+			  .AddEndpointFilter<ValidationFilter<CreateUserInGroupRequest>>()
+			  .ProducesValidationProblem(400)
+			  .Produces(422, typeof(CreateUserBadRequestResponse))
+			  .Produces(200, typeof(CreateUserInGroupOKResponse))
+			  .ProducesValidationProblem(400)
+			  .WithSummary("Creates user in group without password")
+			  .WithDescription("Creates user in group without password and Activation status");
 
 			userEndpoint.MapPost("/password", User.CreateUserWithPassword)
 			  .AddEndpointFilter<ValidationFilter<CreateUserWithPasswordRequest>>()

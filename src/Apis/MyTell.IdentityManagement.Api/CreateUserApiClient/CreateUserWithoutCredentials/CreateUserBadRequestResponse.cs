@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace CreateUser
 {
-    public class CreateUserWithoutCredentialsBadRequestResponse
+    public class CreateUserBadRequestResponse
     {
         public string ErrorCode { get; set; }
         public string ErrorSummary { get; set; }
