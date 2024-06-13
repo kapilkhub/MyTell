@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace CreateUser
 {
-    public class CreateUserWithoutCredentialsResponse
+    public class CreateUserWithoutCredentialsOKResponse
     {
         public string Id { get; set; }
         public string Status { get; set; }

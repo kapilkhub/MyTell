@@ -8,13 +8,22 @@ namespace MyTell.IdentityManagement.Api.Endpoints.EndpointRouteBuilderExtensions
     {
         public static void RegisterUserCreateEndpoints(this IEndpointRouteBuilder endpointRouteBuilder)
         {
-            var romanEndPoints = endpointRouteBuilder.MapGroup("/user").WithOpenApi();
+            var userEndpoint = endpointRouteBuilder.MapGroup("/user").WithOpenApi();
 
-            romanEndPoints.MapPost("", User.Create)
+            userEndpoint.MapPost("", User.CreateUserWithoutCredentials)
                 .AddEndpointFilter<ValidationFilter<CreateUserWithoutCredentialsRequest>>()
 				.ProducesValidationProblem(400)
-                .WithSummary("Creates user without password")
+				.Produces(422,typeof(CreateUserWithoutCredentialsBadRequestResponse))
+				.Produces(200, typeof(CreateUserWithoutCredentialsOKResponse))
+				.ProducesValidationProblem(400)
+				.WithSummary("Creates user without password")
                 .WithDescription("Creates user without password and Activation status");
-        }
+
+			userEndpoint.MapPost("/password", User.CreateUserWithPassword)
+			  .AddEndpointFilter<ValidationFilter<CreateUserWithPasswordRequest>>()
+			  .ProducesValidationProblem(400)
+			  .WithSummary("Creates user with password")
+			  .WithDescription("Creates user with password and Activation status");
+		}
     }
 }
