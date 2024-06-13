@@ -57,16 +57,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="appsettings.development.json" />
+	  <None Remove="appsettings.json" />
+	  <None Remove="appsettings.production.json" />
 	  <None Remove="Resources\Fonts\MaterialIcons-Regular.ttf" />
 	  <None Remove="Resources\Images\banner.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="appsettings.production.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="appsettings.development.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="IdentityModel.OidcClient" Version="6.0.0" />
 		<PackageReference Include="InputKit.Maui" Version="4.4.3" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Mopups" Version="1.3.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Plugin.Maui.OCR" Version="1.0.11" />
 		<PackageReference Include="UraniumUI.Material" Version="2.8.1" />
 		<PackageReference Include="UraniumUI.Icons.MaterialSymbols" Version="2.8.1" />
@@ -74,6 +92,7 @@
 		<PackageReference Include="UraniumUI.Blurs" Version="2.8.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
 		<PackageReference Include="UraniumUI.Validations.DataAnnotations" Version="2.8.1" />
 	</ItemGroup>
 
