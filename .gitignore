@@ -4,3 +4,12 @@
 
 /src/Apis/MyTell.IdentityManagement.Api/bin/Debug/net8.0
 /src/Apis/MyTell.IdentityManagement.Api/obj
+/src/Apis/MyTell.IdentityManagement.Api/bin/Release/net8.0
+/src/Apis/MyTell.IdentityManagement.Api/Properties/PublishProfiles
+/src/Apis/MyTell.IdentityManagement.Api/Properties/ServiceDependencies/MyTellIdentityManagementApi - Zip Deploy
+/src/Apis/MyTell.IdentityManagement.Api/Properties/serviceDependencies.json
+/src/Apis/MyTell.IdentityManagement.Api/Properties/serviceDependencies.MyTellIdentityManagementApi - Zip Deploy.json
+/src/Apis/MyTell.IdentityManagement.Api/Properties/serviceDependencies.MyTellIdentityManagementApi - Zip Deploy.json.user
+/src/Apis/MyTell.IdentityManagement.Api/.config
+/src/Mobility/MyTell.Mobile.App/MyTell.Mobile.App/appsettings.development.json
+/src/Mobility/MyTell.Mobile.App/MyTell.Mobile.App/appsettings.json
