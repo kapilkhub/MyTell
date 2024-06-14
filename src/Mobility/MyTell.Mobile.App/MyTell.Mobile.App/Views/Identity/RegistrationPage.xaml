@@ -8,27 +8,53 @@
 			 xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
 			 xmlns:m="clr-namespace:UraniumUI.Icons.MaterialSymbols;assembly=UraniumUI.Icons.MaterialSymbols"
 			 xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
-             Title="Registration Page">
+             Title="Sign Up">
+
 
 	<Grid>
 		<ScrollView>
 			<Grid>
-				<VerticalStackLayout Padding="20">
+				<VerticalStackLayout Padding="20" Spacing="30">
 					<input:FormView>
-						
+						<Grid RowDefinitions="Auto,Auto,*" RowSpacing="5">
+							<Frame  Grid.Row="0"  BackgroundColor="White">
+								<VerticalStackLayout>
+									<Label FontAttributes="Bold" Margin="1">Personal Information</Label>
+									<Grid RowDefinitions="*,*,*,*,*"
+							       RowSpacing="10"
+							       >
+							    	<material:TextField Grid.Row="0" Title="Emirates Id"  AllowClear="True" Text="{v:ValidationBinding EmiratesId}" 
+                                      Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Add_card}}"/>
+							    	
+							    	<material:TextField Grid.Row="1" Title="First Name"  AllowClear="True" Text="{v:ValidationBinding FirstName}" 
+                                     Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.User_attributes}}"/>
+							    
+							    	<material:TextField Grid.Row="2" Title="Middle Name"  AllowClear="True" Text="{v:ValidationBinding MiddleName}" 
+						             Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.User_attributes}}"/>
+							    
+							    	<material:TextField Grid.Row="3" Title="Last Name"  AllowClear="True" Text="{v:ValidationBinding LastName}" 
+                                    Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.User_attributes}}"/>
+							      </Grid>
+								</VerticalStackLayout>
+							</Frame>
+							
+							<Frame Grid.Row="1"  BackgroundColor="White">
+								<VerticalStackLayout>
+							      	<Label FontAttributes="Bold" Margin="1">Email Address</Label>
+							       <Grid RowDefinitions="*,*" RowSpacing="10">
+							      	<material:TextField Grid.Row="0" Title="E-mail" AllowClear="True" Text="{v:ValidationBinding Email}" 
+                                          Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Mail}}"/>
+							      	
+							      	<material:TextField Grid.Row="1" Title="Confirm E-mail" AllowClear="True" Text="{v:ValidationBinding ConfirmedEmail}" 
+                                     Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Mail}}"/>
+							      </Grid>
+								</VerticalStackLayout>
+							</Frame>
 
-						<material:TextField Title="First Name"  AllowClear="True" Text="{v:ValidationBinding FirstName}" 
-						Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.User_attributes}}"/>
-
-						<material:TextField Title="Middle Name"  AllowClear="True" Text="{v:ValidationBinding MiddleName}" 
-									Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.User_attributes}}"/>
-
-						<material:TextField Title="Last Name"  AllowClear="True" Text="{v:ValidationBinding LastName}" 
-						      Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.User_attributes}}"/>
-
-						<material:TextField Title="E-mail" AllowClear="True" Text="{v:ValidationBinding Email}" 
-								Icon="{FontImageSource FontFamily=MaterialSharp, Glyph={x:Static m:MaterialSharp.Mail}}"/>
-
+							<Frame Grid.Row="2"  BackgroundColor="White">
+								<Button StyleClass="FilledButton" Text="Next" HorizontalOptions="End" Command="{Binding NextCommand}" />
+							</Frame>
+						</Grid>
 					</input:FormView>
 				</VerticalStackLayout>
 			</Grid>

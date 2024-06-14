@@ -5,7 +5,6 @@ namespace MyTell.Mobile.App.Views.Identity;
 
 public partial class RegistrationPage : ContentPageBase
 {
-	
 	public RegistrationPage(RegistrationViewModel vm)
 	{
 		BindingContext = vm;

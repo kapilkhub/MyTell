@@ -48,6 +48,9 @@ namespace MyTell.Mobile.App.ViewModels.Identity
 
 					cardReader.EmiratesId = ocrResult.Lines.FirstOrDefault(l => l.StartsWith("784", StringComparison.OrdinalIgnoreCase));
 
+					var gender = ocrResult.Lines.FirstOrDefault(l => l.StartsWith("Sex", StringComparison.OrdinalIgnoreCase))?.Split(":");
+					cardReader.Gender = cardReader.GetGender(gender?.Length > 1 ? gender[1]?.Trim() : null);
+
 					await NavigationService.GoToRegister(cardReader);
 
 				}
