@@ -13,3 +13,6 @@
 /src/Apis/MyTell.IdentityManagement.Api/.config
 /src/Mobility/MyTell.Mobile.App/MyTell.Mobile.App/appsettings.development.json
 /src/Mobility/MyTell.Mobile.App/MyTell.Mobile.App/appsettings.json
+/src/Mobility/MyTell.Mobile.App/MyTell.Mobile.App/appsettings.development.json
+/src/Mobility/MyTell.Mobile.App/MyTell.Mobile.App/appsettings.json
+/src/Mobility/MyTell.Mobile.App/MyTell.Mobile.App/appsettings.production.json
